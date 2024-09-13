@@ -42,7 +42,7 @@ export class ProductorsFactory {
       productorName: faker.person.fullName(),
       farmName: faker.company.name(),
       city: faker.location.city(),
-      state: faker.location.state(),
+      state: faker.location.county(),
       farmTotalArea: faker.number.int({
         min: minTotalArea,
         max: minTotalArea * 2,

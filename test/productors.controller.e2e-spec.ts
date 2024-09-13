@@ -190,7 +190,7 @@ describe('ProductorsController (e2e)', () => {
 
       const productorUpdateInput: ProductorsUpdateInputDto = {
         city: faker.location.city(),
-        state: faker.location.city(),
+        state: faker.location.county(),
       };
 
       const updateResp = await request(app.getHttpServer())
