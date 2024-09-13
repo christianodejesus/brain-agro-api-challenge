@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model FarmProductor {
+model AgriculturalProductor {
   id             Int      @id @default(autoincrement())
   documentNumber String   @unique
   productorName  String
