@@ -1,9 +1,23 @@
-import { Prisma } from '@prisma/client';
+import { AgriculturalProductor, Prisma } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 import * as cpf from '@fnando/cpf';
 import { ProductorsInputDto } from './model/productors.dto';
+import { randomInt } from 'crypto';
 
 export class ProductorsFactory {
+  static generateAgriculturalProductor(
+    inputData?: Partial<Prisma.AgriculturalProductorCreateInput>,
+  ): AgriculturalProductor {
+    return {
+      id: randomInt(60),
+      ...ProductorsFactory.generateProductorInput(
+        inputData as ProductorsInputDto,
+      ),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+  }
+
   static generateProductorDbInput(
     inputData?: Partial<Prisma.AgriculturalProductorCreateInput>,
   ): Prisma.AgriculturalProductorCreateInput {
