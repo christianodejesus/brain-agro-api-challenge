@@ -33,8 +33,8 @@ export class ProductorsFactory {
   static generateProductorInput(
     inputData?: Partial<ProductorsInputDto>,
   ): ProductorsInputDto {
-    const farmForestArea = faker.number.int(150),
-      farmUsefulArea = faker.number.int(150),
+    const farmForestArea = faker.number.int({ max: 1000, multipleOf: 5 }),
+      farmUsefulArea = faker.number.int({ max: 1000, multipleOf: 5 }),
       minTotalArea = farmForestArea + farmUsefulArea;
 
     return {

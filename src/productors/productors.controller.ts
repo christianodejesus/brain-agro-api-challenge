@@ -1,13 +1,18 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
   Post,
+  Put,
 } from '@nestjs/common';
 import { ProductorsService } from './productors.service';
-import { ProductorsInputDto } from './model/productors.dto';
+import {
+  ProductorsInputDto,
+  ProductorsUpdateInputDto,
+} from './model/productors.dto';
 import { ProductorInputValidationPipe } from './productor.input.pipe';
 
 @Controller('productors')
@@ -23,6 +28,19 @@ export class ProductorsController {
   async createProductor(
     @Body(new ProductorInputValidationPipe()) data: ProductorsInputDto,
   ) {
-    return data;
+    return await this.productorsService.create(data);
+  }
+
+  @Put(':id')
+  async updateProductor(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(new ProductorInputValidationPipe()) data: ProductorsUpdateInputDto,
+  ) {
+    return await this.productorsService.update(id, data);
+  }
+
+  @Delete(':id')
+  async deleteProductor(@Param('id', ParseIntPipe) id: number) {
+    await this.productorsService.delete(id);
   }
 }

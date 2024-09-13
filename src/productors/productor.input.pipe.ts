@@ -17,27 +17,31 @@ export class ProductorInputValidationPipe implements PipeTransform {
 
     const invalidCauses: string[] = [];
 
-    if (
-      Number(farmTotalArea) <
-      Number(farmForestArea) + Number(farmUsefulArea)
-    ) {
-      invalidCauses.push(
-        'farmTotalArea value cannot be greater than farmForestArea + farmUsefulArea values',
-      );
+    if (farmTotalArea && farmForestArea && farmUsefulArea) {
+      if (
+        Number(farmTotalArea) <
+        Number(farmForestArea) + Number(farmUsefulArea)
+      ) {
+        invalidCauses.push(
+          'farmTotalArea value cannot be less than summing of farmForestArea and farmUsefulArea values',
+        );
+      }
     }
 
-    if (![11, 14].includes(documentNumber.length)) {
-      invalidCauses.push('documentNumber must have exactly 11 or 14 digits');
-    } else if (
-      documentNumber.length === 11 &&
-      !cpfUtil.isValid(documentNumber)
-    ) {
-      invalidCauses.push('documentNumber has an invalid CPF value');
-    } else if (
-      documentNumber.length === 14 &&
-      !cnpjUtil.isValid(documentNumber)
-    ) {
-      invalidCauses.push('documentNumber has an invalid CNPJ value');
+    if (documentNumber) {
+      if (![11, 14].includes(documentNumber.length)) {
+        invalidCauses.push('documentNumber must have exactly 11 or 14 digits');
+      } else if (
+        documentNumber.length === 11 &&
+        !cpfUtil.isValid(documentNumber)
+      ) {
+        invalidCauses.push('documentNumber has an invalid CPF value');
+      } else if (
+        documentNumber.length === 14 &&
+        !cnpjUtil.isValid(documentNumber)
+      ) {
+        invalidCauses.push('documentNumber has an invalid CNPJ value');
+      }
     }
 
     if (invalidCauses.length > 0) {
