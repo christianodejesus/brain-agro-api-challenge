@@ -18,6 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:all": "yarn test && yarn test:e2e",
     "stack:up": "docker compose -f ./docker/docker-compose.yml up -d --renew-anon-volumes",
     "stack:down": "docker compose -f ./docker/docker-compose.yml down --volumes",
     "stack:reload": "yarn stack:down && yarn stack:up"

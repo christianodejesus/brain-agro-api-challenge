@@ -15,6 +15,10 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
+  it('app should be defined', () => {
+    expect(app).toBeDefined();
+  });
+
   it('GET /health', async () => {
     const res = await request(app.getHttpServer())
       .get('/health')

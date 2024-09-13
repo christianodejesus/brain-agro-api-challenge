@@ -16,11 +16,5 @@ describe('MainController', () => {
     it('should be defined', () => {
       expect(controller).toBeDefined();
     });
-
-    it('should return health data', () => {
-      const healthData = controller.gethealth();
-      expect(healthData).toHaveProperty('message', `I'm health`);
-      expect(healthData).toHaveProperty('startedAt');
-    });
   });
 });
