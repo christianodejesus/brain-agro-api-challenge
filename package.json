@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "build:container": "docker build --build-arg BUILD_TIME=$(date +%Y-%m-%dT%H:%M:%SZ) --build-arg NODE_ENV=development --build-arg COMMIT_HASH=$(git show -s --format='%H') -t brain-agro-api:$(git show -s --format='%H') -f Dockerfile .",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

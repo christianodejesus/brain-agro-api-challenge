@@ -7,6 +7,12 @@ class HealthOutputDto {
 
   @ApiProperty()
   startedAt: string;
+
+  @ApiProperty()
+  builtAt: string;
+
+  @ApiProperty()
+  commitHash: string;
 }
 
 @Controller()
@@ -24,6 +30,8 @@ export class MainController {
     return {
       message: `I'm health`,
       startedAt: this.startDate,
+      builtAt: process.env.BUILD_TIME || this.startDate,
+      commitHash: process.env.COMMIT_HASH || '',
     };
   }
 }
