@@ -13,7 +13,7 @@ This project was made as a tech challenge for compete in Serasa Experian backend
 
 ## Project setup
 
-Download or clone API source code and follow above steps
+Download or clone API source code and follow above steps to setup local environment
 
 ```bash
 # install project dependencies
@@ -21,22 +21,32 @@ $ yarn
 
 # running local stack
 $ yarn stack:up
+
+# setup local database
+$ yarn db:setup
 ```
 
 ## Compile and run the project
 
 ```bash
 # development
-$ yarn run start
+$ yarn start
 
 # watch mode
-$ yarn run start:dev
+$ yarn start:watch
 
 # production mode
-$ yarn run start:prod
+$ yarn start:prod
 ```
+With these steps the API is running locally on port 3000, then you can access the api under URL http://localhost:3000/v1.
 
-## Run tests
+- Access API health check endpoint (http://localhost:3000/v1/health)
+- Access API Swagger documentation (http://localhost:3000/docs)
+- Access API Swagger documentation json file (http://localhost:3000/docs/json)
+
+## Running tests
+
+### Note: to run tests properly, you need to setup local stack and database, see Project Setup section for this
 
 ```bash
 # unit tests
@@ -45,8 +55,8 @@ $ yarn run test
 # e2e tests
 $ yarn run test:e2e
 
-# test coverage
-$ yarn run test:cov
+# all tests at once
+$ yarn run test:all
 ```
 
 ## About Author

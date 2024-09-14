@@ -29,7 +29,7 @@ export class DashboardService {
     });
 
     return {
-      totalArea: totalAreaSum._sum.farmTotalArea,
+      totalArea: totalAreaSum._sum.farmTotalArea || 0,
     };
   }
 
@@ -65,8 +65,8 @@ export class DashboardService {
     });
 
     return {
-      totalForestArea: totalAreasSum._sum.farmForestArea,
-      totalUsefulArea: totalAreasSum._sum.farmUsefulArea,
+      totalForestArea: totalAreasSum._sum.farmForestArea || 0,
+      totalUsefulArea: totalAreasSum._sum.farmUsefulArea || 0,
     };
   }
 

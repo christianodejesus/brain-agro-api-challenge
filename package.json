@@ -11,7 +11,7 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "yarn build && node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -21,7 +21,8 @@
     "test:all": "yarn test && yarn test:e2e",
     "stack:up": "docker compose -f ./docker/docker-compose.yml up -d --renew-anon-volumes",
     "stack:down": "docker compose -f ./docker/docker-compose.yml down --volumes",
-    "stack:reload": "yarn stack:down && yarn stack:up"
+    "stack:reload": "yarn stack:down && yarn stack:up",
+    "db:setup": "yarn prisma migrate reset --force"
   },
   "dependencies": {
     "@fnando/cnpj": "^1.0.2",
@@ -31,6 +32,7 @@
     "@nestjs/core": "^10.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/swagger": "^7.4.0",
     "@prisma/client": "^5.19.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
