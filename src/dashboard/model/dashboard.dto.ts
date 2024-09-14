@@ -21,3 +21,11 @@ export interface ProductorTotalsByAreaUseOutputDto {
 export interface TotalProductorsByFarmCropOutputDto {
   [index: string]: number;
 }
+
+export interface ProductorsDashboardDataOutputDto {
+  totalProductors: number;
+  totalProductorsArea: number;
+  totalProductorsByState: ProductorTotalsByStateOutputDto;
+  totalAreas: ProductorTotalsByAreaUseOutputDto;
+  totalProductorsByFarmCrop: TotalProductorsByFarmCropOutputDto;
+}

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import {
+  ProductorsDashboardDataOutputDto,
   ProductorTotalsByAreaUseOutputDto,
   ProductorTotalsByStateOutputDto,
   TotalProductorsAreaOutputDto,
@@ -79,5 +80,31 @@ export class DashboardService {
     });
 
     return results;
+  }
+
+  async getDashboardData(): Promise<ProductorsDashboardDataOutputDto> {
+    const promises = Promise.all([
+      this.getTotalProductors(),
+      this.getTotalProductorsArea(),
+      this.getTotalAreaAndProductorsByState(),
+      this.getTotalAreaByAreaUse(),
+      this.getTotalProductorsByFarmCrop(),
+    ]);
+
+    const [
+      totalProductorsOutputDto,
+      totalProductorsAreaOutputDto,
+      totalProductorsByState,
+      totalAreas,
+      totalProductorsByFarmCrop,
+    ] = await promises;
+
+    return {
+      totalProductors: totalProductorsOutputDto.total,
+      totalProductorsArea: totalProductorsAreaOutputDto.totalArea,
+      totalProductorsByState,
+      totalAreas,
+      totalProductorsByFarmCrop,
+    };
   }
 }
