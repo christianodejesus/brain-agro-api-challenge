@@ -59,6 +59,21 @@ $ yarn run test:e2e
 $ yarn run test:all
 ```
 
+## Available Online Version
+
+Follow the links to access the API running online on AWS.
+
+- [API Swagger Online Documentation](http://brain-agro-api-development-alb-848396433.us-east-2.elb.amazonaws.com/docs)
+- [API Health Check Endpoint](http://brain-agro-api-development-alb-848396433.us-east-2.elb.amazonaws.com/v1/health)
+
+#### All functional enpoints, route contracts and data structures can be found in online documentation
+
+## Infrastructure Project for AWS
+
+This is the repository for infrastructure project repository, when you can find the project used to raise up all infrastructure on AWS to run the online version of API.
+
+- [https://github.com/christianodejesus/brain-agro-terraform](https://github.com/christianodejesus/brain-agro-terraform)
+
 ## About Author
 
 - Github - [Christiano Marques](https://github.com/christianodejesus)
